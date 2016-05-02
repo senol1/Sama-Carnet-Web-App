@@ -1,0 +1,30 @@
+conseils:
+    path:     /
+    defaults: { _controller: "SCGeneralBundle:Conseils:index" }
+
+conseils_show:
+    path:     /{id}/show
+    defaults: { _controller: "SCGeneralBundle:Conseils:show" }
+
+conseils_new:
+    path:     /new
+    defaults: { _controller: "SCGeneralBundle:Conseils:new" }
+
+conseils_create:
+    path:     /create
+    defaults: { _controller: "SCGeneralBundle:Conseils:create" }
+    methods:  POST
+
+conseils_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SCGeneralBundle:Conseils:edit" }
+
+conseils_update:
+    path:     /{id}/update
+    defaults: { _controller: "SCGeneralBundle:Conseils:update" }
+    methods:  [POST, PUT]
+
+conseils_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SCGeneralBundle:Conseils:delete" }
+    methods:  [POST, DELETE]

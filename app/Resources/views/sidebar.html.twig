@@ -1,0 +1,50 @@
+<!-- sidebar menu -->
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+    <div class="menu_section">
+        <h3>{{ app.user.fonction }}</h3>
+        <ul class="nav side-menu">
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <li><a href="{{ path('sc_general_homepage') }}"><i class="fa fa-home"></i> Tableau de bord</a>
+                {% elseif is_granted('ROLE_ADMIN')  %}
+            <li><a href="{{ path('admin_index') }}"><i class="fa fa-home"></i> Tableau de bord</a>
+                {% endif %}
+            </li>
+            <li><a><i class="fa fa-users"></i> Mes patientes <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="display: none">
+                    <li><a href="{{ path('femme') }}">liste de mes patientes</a>
+                    </li>
+                    <li><a href="{{ path('femme_new') }}">Enregister une patiente</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-bar-chart-o"></i> Examens <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="display: none">
+                    <li><a href="#">Gestions des examens</a>
+                    </li>
+                    <li><a href="{{ path('calendrier') }}">Calendrier des examens</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a  href="{{ path('rendez_vous') }}"><i class="fa fa-calendar"></i> Rendez-vous</a>
+            </li>
+        </ul>
+    </div>
+    <div class="menu_section">
+        <h3>Options</h3>
+        <ul class="nav side-menu">
+            <li><a href="{{ path('conseils') }}"><i class="fa fa-bug"></i> Conseilles pratiques<span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="display: none">
+                    <li><a href="{{ path('categories') }}">Liste des cat&eacute;gories</a>
+                    </li>
+                    <li><a href="{{ path('categories_new') }}">Nouvelle cat&eacute;gorie</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-windows"></i> SOS <span class="fa fa-chevron-down"></span></a>
+            </li>
+        </ul>
+    </div>
+
+</div>

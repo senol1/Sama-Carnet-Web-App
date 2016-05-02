@@ -1,0 +1,43 @@
+sc_general_categories:
+    resource: "@SCGeneralBundle/Resources/config/routing/categories.yml"
+    prefix:   /categories
+
+sc_general_conseils:
+    resource: "@SCGeneralBundle/Resources/config/routing/conseils.yml"
+    prefix:   /conseils
+
+sc_general_examen:
+    resource: "@SCGeneralBundle/Resources/config/routing/examen.yml"
+    prefix:   /examen
+
+sc_general_femme:
+    resource: "@SCGeneralBundle/Resources/config/routing/femme.yml"
+    prefix:   /femme
+
+sc_general_homepage:
+    path:     /
+    defaults: { _controller: SCGeneralBundle:Default:index }
+
+super_admin_index:
+    path:     /super+admin/index
+    defaults: { _controller: SCGeneralBundle:SuperAdmin:index }
+
+admin_index:
+    path:     /medecin/index
+    defaults: { _controller: SCGeneralBundle:Admin:index }
+
+admin_stats:
+    path:     /medecin/stats
+    defaults: { _controller: SCGeneralBundle:Admin:stats }
+
+admin_profile:
+    path:     /medecin/profile
+    defaults: { _controller: SCGeneralBundle:Admin:profile }
+
+admin_femme_status:
+    path:     /admin/femme/{status}/{id}
+    defaults: { _controller: SCGeneralBundle:Admin:status }
+
+rendez_vous:
+    path: /admin/rendez+vous
+    defaults: { _controller: SCGeneralBundle:Admin:rendezvous }

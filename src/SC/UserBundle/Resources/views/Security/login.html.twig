@@ -1,0 +1,92 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    <div class="">
+        <a class="hiddenanchor" id="toregister"></a>
+        <a class="hiddenanchor" id="tologin"></a>
+
+        <div id="wrapper">
+            <div id="login" class="animate form">
+                <section class="login_content">
+                    <form class="form col-md-12 center-block" action="{{ path("fos_user_security_check") }}" method="post">
+                        <input  type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        <h1>Se connecter</h1>
+                        {% if error %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </div>
+                        {% endif %}
+                        <div>
+                            <input placeholder="E-mail ou pseudonyme" class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                        </div>
+                        <div>
+                            <input placeholder="Mot de passe" class="form-control" type="password" id="password" name="_password" required="required" />
+                        </div>
+                        <input style="float: left" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                        <label style="float: left" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                        <div style="float: left">
+                            <input class="btn btn-default submit" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                            <a style="float: right" class="reset_pass" href="#">Mot de passe oubli&eacute;?</a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="separator">
+
+                            <!--p class="change_link">New to site?
+                                <a href="#toregister" class="to_register"> Créer un nouveau compte </a>
+                            </p-->
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Sama Carnet</h1>
+
+                                <p> &copy; {{ "now"|date("Y") }} Tous les droits r&eacute;serv&eacute;s.</p>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- form -->
+                </section>
+                <!-- content -->
+            </div>
+            <div id="register" class="animate form">
+                <section class="login_content">
+                    <form>
+                        <h1>Create Account</h1>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Username" required="" />
+                        </div>
+                        <div>
+                            <input type="email" class="form-control" placeholder="Email" required="" />
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" placeholder="Password" required="" />
+                        </div>
+                        <div>
+                            <a class="btn btn-default submit" href="index.html">Submit</a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="separator">
+
+                            <p class="change_link">Already a member ?
+                                <a href="#tologin" class="to_register"> Log in </a>
+                            </p>
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Gentelella Alela!</h1>
+
+                                <p>©2015 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- form -->
+                </section>
+                <!-- content -->
+            </div>
+        </div>
+    </div>
+
+
+{% endblock fos_user_content %}

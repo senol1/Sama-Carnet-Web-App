@@ -1,0 +1,121 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{{ asset('materialize/css/materialize.css') }}">
+{% endblock %}
+{% block body -%}
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h3>Liste des examens pass&eacute;s</h3>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <ul class="list-unstyled timeline">
+                    {% set nbre = entities|length %}
+                    {% for entity in entities %}
+                    <li>
+                        <div class="block">
+                            <div class="tags">
+                                <a href="" class="tag">
+                                    <span>Examen {{ nbre }}</span>
+                                </a>
+                            </div>
+                            <div class="block_content">
+                                <h2 class="title">
+                                    <a>Titre de l'examen</a>
+                                </h2>
+                                <div class="byline">
+                                    <span>{% if entity.rendezvous %}{{ entity.rendezvous|date('Y-m-d H:i:s') }}{% endif %}</span> par <a>{{ app.user.username }}</a>
+                                </div>
+                                <p class="excerpt">{{ entity.observations }} ...<a>D&eacute;tails</a>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                        {% set nbre = nbre - 1 %}
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <a id="nouveau" data-toggle="modal" data-target="#myModal" style="float: right" class="btn-floating btn-large waves-effect waves-light btn-default">
+        <i class="material-icons fa fa-plus"></i>
+    </a>
+
+    <!-- Modal pour ajouter un examen-->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Nouvelle consultation</h4>
+                </div>
+                <div id="bodyModal" class="modal-body">
+                    {{ render(controller("SCGeneralBundle:Examen:new")) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        {# for entity in entities %}
+            <tr>
+                <td><a href="{{ path('examen_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.taille }}</td>
+                <td>{{ entity.poids }}</td>
+                <td>{{ entity.albumine }}</td>
+                <td>{{ entity.sucre }}</td>
+                <td>{{ entity.pressionarterielle }}</td>
+                <td>{{ entity.hauteuruterine }}</td>
+                <td>{{ entity.tauxhemoglobine }}</td>
+                <td>{{ entity.observations }}</td>
+                <td>{% if entity.rendezvous %}{{ entity.rendezvous|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('examen_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('examen_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor #}
+
+    {% endblock %}
+
+{% block javascripts %}
+        {{ parent() }}
+        <!-- Compiled and minified JavaScript -->
+        <script src="{{ asset('materialize/js/materialize.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#nouveau').click(function() {
+                //$('#bodyModal').html('<img style="margin-left: 45%;" src="{##} asset('images/ajax-loader.gif') }}" alt=""/>');
+                var theId = $(this).attr('id');
+                $.ajax({
+                    type: "POST",
+                    url: "{{ path('examen_new') }}",
+                    success: function(){
+                        $('#bodyModal').html();
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

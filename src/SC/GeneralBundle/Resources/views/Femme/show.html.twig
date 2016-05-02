@@ -1,0 +1,61 @@
+<table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>E-mail</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ entity.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ entity.ville }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ entity.pays }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ entity.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Âge</th>
+                <td>{{ entity.age }}</td>
+            </tr>
+            <tr>
+                <th>Nombre d'enfants</th>
+                <td>{{ entity.nombreenfants }}</td>
+            </tr>
+            <tr>
+                <th>Etat de la grossesse</th>
+                <td>
+                    {% if entity.etatgrossesse == 1 %}
+                        <span class="label label-info">{{ entity.etatgrossesse }}<sup>ière</sup> semaine</span>
+                    {% else %}
+                        <span class="label label-info">{{ entity.etatgrossesse }}<sup>ième</sup> semaine</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>
+                    {% if entity.status == 1  %}
+                        <span class="label label-danger">En cours</span>
+                    {% else %}
+                        <span class="label label-success">Terminer</span>
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ul>

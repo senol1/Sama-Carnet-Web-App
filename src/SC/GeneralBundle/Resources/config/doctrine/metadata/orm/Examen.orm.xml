@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Examen" table="examen">
+    <indexes>
+      <index name="fk_Examen_femme_idx" columns="femme_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="taille" type="float" column="taille" precision="10" scale="0" nullable="true"/>
+    <field name="poids" type="float" column="poids" precision="10" scale="0" nullable="true"/>
+    <field name="albumine" type="float" column="albumine" precision="10" scale="0" nullable="true"/>
+    <field name="sucre" type="float" column="sucre" precision="10" scale="0" nullable="true"/>
+    <field name="pressionarterielle" type="float" column="pressionArterielle" precision="10" scale="0" nullable="true"/>
+    <field name="hauteuruterine" type="float" column="hauteurUterine" precision="10" scale="0" nullable="true"/>
+    <field name="tauxhemoglobine" type="float" column="tauxHemoglobine" precision="10" scale="0" nullable="true"/>
+    <field name="observations" type="text" column="observations" nullable="true"/>
+    <field name="rendezvous" type="datetime" column="rendezvous" nullable="true"/>
+    <many-to-one field="femme" target-entity="Femme">
+      <join-columns>
+        <join-column name="femme_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

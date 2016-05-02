@@ -1,0 +1,4 @@
+services:
+#    sc_general.example:
+#        class: SC\GeneralBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,30 @@
+femme:
+    path:     /
+    defaults: { _controller: "SCGeneralBundle:Femme:index" }
+
+femme_show:
+    path:     /{id}/show
+    defaults: { _controller: "SCGeneralBundle:Femme:show" }
+
+femme_new:
+    path:     /new
+    defaults: { _controller: "SCGeneralBundle:Femme:new" }
+
+femme_create:
+    path:     /create
+    defaults: { _controller: "SCGeneralBundle:Femme:create" }
+    methods:  POST
+
+femme_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SCGeneralBundle:Femme:edit" }
+
+femme_update:
+    path:     /{id}/update
+    defaults: { _controller: "SCGeneralBundle:Femme:update" }
+    methods:  [POST, PUT]
+
+femme_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SCGeneralBundle:Femme:delete" }
+    methods:  [POST, DELETE]
